@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link href="https://fonts.googleapis.com/css?family=Alex+Brush&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Crimson+Pro&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <title>{% block title %}Admin{% endblock %} - Owedding</title>
+        <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+        {% block stylesheets %}{% endblock %}
+    </head>
+    <body>
+
+    {# Navbar #}
+    {% block nav %}
+
+    {% include 'backend/navigation/_nav.html.twig' %}
+
+    {% endblock %}
+        
+
+    {# Container titlePage #}
+
+        <div class="titleInterface fixed-top">
+            <h1>{% block titleInterface %}INTERFACE ADMINISTRATEUR{% endblock %}</h1>
+        </div>
+
+
+    {# Container principal #}
+
+        <div class="container">
+
+            <h2>{% block titlePage %}{% endblock %}</h2>
+
+            {# Messages d'alerte #}
+            {% for label, messages in app.flashes %}
+                {% for message in messages %}
+                    <div class="alert alert-{{ label }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endfor %}
+
+            {% block body %}{% endblock %}
+
+        </div>
+
+        {% block javascripts %}
+        <script src="https://kit.fontawesome.com/7d50825b89.js"></script>
+        {% endblock %}
+    </body>
+</html>

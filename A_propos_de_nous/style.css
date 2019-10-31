@@ -1,0 +1,79 @@
+body {
+    
+    background-image: url('images/BackgroundT.png');
+    background-size: 100%;
+   
+}
+
+h1, h3 {
+    margin-top: 3rem;
+    text-align: center;
+}
+
+.intro {
+  width: 50%;
+  margin: 3rem auto;
+  font-size: 1.2rem;
+  text-align: justify;
+  color: #144956;
+}
+
+.contact {
+    font-weight: bold;
+    color: #144956;
+
+}
+
+.far.fa-smile {
+    color: #144956;
+}
+.row {
+
+  margin: 5rem;
+   
+}
+
+.card {
+    text-align: center;
+    border-radius: 1em;
+    width: 19rem;
+    height: 100%;
+    border:  2px solid #DEE4DD;
+}
+
+
+.card-body {
+    padding-bottom: 0.8em;
+}
+
+.card-img-top {
+    width: 13em;
+    height: 13em;
+    border-radius: 50%;
+    border: 0.2em solid #144956;
+    margin: auto;
+    margin-top: 1.5em;
+    margin-bottom: 1em;
+}
+
+.card-header {
+    border-bottom-right-radius: 0.9em;
+    border-bottom-left-radius: 0.9em;
+    color: #144956;
+    background-color: #DEE4DD;
+    font-weight: bold;
+}
+
+h5 {
+    font-weight: bold;
+}
+
+img {
+    object-fit: cover;
+}
+
+
+/** 404 **/
+
+
+

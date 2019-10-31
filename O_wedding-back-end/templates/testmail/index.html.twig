@@ -1,0 +1,12 @@
+
+{% block body %}
+
+<div class="example-wrapper">
+
+{{ form_start(form) }}<!-- genere <form action="" method="POST"> -->
+    {{ form_widget(form) }} <!-- genere les input , text , integer etc... selon la definition effectuée dans le type du form -->
+    <button class="btn">{{ button_label|default('Save') }}</button>
+{{ form_end(form) }}<!-- genere </form> -->
+
+{% endblock %}
+

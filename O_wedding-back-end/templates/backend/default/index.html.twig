@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block titleInterface %}Bienvenue sur l'interface Administrateur{% endblock %}
+
+
+
+{% block body %}
+
+<div class="pictureHome">
+<img src="{{ asset('images/coucou.jpg')  }}">
+
+    <div class="connect">
+    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+        <p>Vous êtes déjà connecté</p>
+        <p>"{{ app.user.username }}"<p>
+    {% else %}
+        <a class="loginHome" href="{{ path('app_login')}}">Se connecter</a>
+    {% endif %}
+    </div>
+
+</div>
+
+
+{% endblock %}

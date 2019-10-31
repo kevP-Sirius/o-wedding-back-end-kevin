@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block titlePage %}Rôle : {{ role.name }}{% endblock %}
+
+{% block body %}
+<a href="{{ path('backend_role_list') }}">Retour à la liste</a>
+
+<div class="card">
+  <div class="card-header">
+    Liste des {{ role.name }}
+  </div>
+  <div class="card-body">
+  <ul>
+{% for user in role.users if  role.users %}
+    <li><a href="{{ path('backend_user_show', { id : user.id }) }}">{{ user.username }}</a></li>
+    {% else %}
+    <li>Aucun {{ role.name }}</li>
+{% endfor %}
+  </ul>
+     
+  <a href="{{ path('backend_role_delete', { id : role.id }) }}" class="btn btn-danger">Supprimer</a> <a href="" class="btn btn-dark">Modifier</a> 
+  </div>
+</div>
+
+
+{% endblock %}

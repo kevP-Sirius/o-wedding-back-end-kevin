@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block titlePage %}Liste des UTILISATEURS{% endblock %}
+
+{% block body %}
+
+ <a href="{{ path('backend_user_new') }}"><button type="button" class="btn btn-success left">Créer un nouveau</button></a>
+ <a class="btn btn-info left" href="{{ path('backend_user_list') }}">Annuler le tri</a>
+    {# table #}
+    <table class="table">
+        <thead class="thead-light">
+            <tr>
+            <th scope="col">#</th>
+            <th scope="col">Date de création
+                <a href="{{ path('backend_user_orderby_date_asc') }}"><i class="fas fa-angle-up"></i></a>
+                <a href="{{ path('backend_user_orderby_date_desc') }}"><i class="fas fa-angle-down"></i></a>
+            </th>
+            <th scope="col">Date de mise à jour</th>
+            <th scope="col">Nom de l'utilisateur
+                <a href="{{ path('backend_user_orderby_username_asc') }}"><i class="fas fa-angle-up"></i></a>
+                <a href="{{ path('backend_user_orderby_username_desc') }}"><i class="fas fa-angle-down"></i></a>
+            </th>
+            <th scope="col">Nom du projet</th>
+            <th scope="col">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% if users %}
+        
+        {% for user in users %}
+            <tr>
+            <th scope="row">{{ user.id}}</th>
+                <td>{{ user.createdAt|date('d-m-Y')}}</td>
+                <td>{{ user.updatedAt|date('d-m-Y')}}</td>
+                <td>{{ user.username}}</td>
+                {% if user.project %}
+                <td>{{ user.project.name}}</td>
+                {% else %}
+                <td><em>Aucun projet</em></td>
+                {% endif %}
+                <td>
+                <a href="{{ path('backend_user_show', { id : user.id }) }}"><button type="button" class="btn btn-info">Détails</button></a>
+                <a href="{{ path('backend_user_delete', { id : user.id }) }}"><button type="button" class="btn btn-danger">Supprimer</button></a>
+                </td>
+
+
+            </tr>
+            <tr>
+        {% endfor %}
+        {% else %}
+            <tr>
+                <th scope="row">Aucun utilisateur</td>
+            </tr>
+        {% endif %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('backend_user_new') }}"><button type="button" class="btn btn-success left">Créer un nouveau</button></a>
+
+
+{% endblock %}

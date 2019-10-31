@@ -1,0 +1,20 @@
+{% extends 'api/base.html.twig' %}
+{% block body %}
+
+<div class="form news email">
+<hr>
+    <h1 style="
+    text-align: center;
+    margin-bottom: 2rem;
+    ">L'utilisateur {{ name }} souhaite prendre contact avec vous !</h1>
+<hr>
+    <h3>Voici son message :</h3>
+    <p>{{ messageToAdmin }}</p>
+    <h4>Voici l'email sur lequel vous pouvez lui répondre :</h4>
+    <p>{{ email }}</p>
+
+    <p>L'équipe <a style="font-weight: bold; font-family: 'Alex Brush', cursive;" href="http://www.owedding.fr/">O'wedding !</a></p>
+    
+  <em>Attention : ceci est un message automatique , merci de ne pas y répondre.</em>
+</div>
+{% endblock %}

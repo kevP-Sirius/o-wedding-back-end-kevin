@@ -1,0 +1,181 @@
+
+{% extends 'base.html.twig' %}
+
+
+
+{% block body %}
+<style>
+   
+
+</style>
+
+
+
+<div class="wrapper-message">
+
+<h1 id="bienvenue">Bienvenue sur le chat des administrateurs</h1>
+<div id="conversation">
+{# {% if messages is defined %}
+{% for message in messages %}
+  <div> 
+  <h3>{{message.sender}}</h3>
+   <p>{{message.body}}</p>
+   <h6>{{message.created_at|date('d-m-Y') }}</h6>
+   </div>
+{% endfor %}
+{% endif %} #}
+
+
+</div>  
+ {# {% for label, messages in app.flashes %}
+                {% for message in messages %}
+                    <div class="alert alert-{{ label }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endfor %} #}
+<div id="pre-send">
+
+</div>
+    
+    
+    <form id="ui" class="ui form">
+  <div class="field">
+    <label>Nom</label>
+     <input type="hidden" id="user-id" name="id" value="{{ id }}">
+    <input id="field-name" type="text" name="name" placeholder="Nom">
+  </div>
+  <div class="field">
+    <label>Message</label>
+    <input id="field-message" rows="2"  placeholder="Votre message"></input>
+  </div>
+  <div id="buttons">
+  <button class="ui button" id="sub-button" type="submit">Submit</button>
+  <button class="ui button" id="reset-button" type="reset">Reset</button>
+  <button class="ui button" id="clear-button" type="button">Clear messages</button>
+  </div>
+  <div id="connected-list">
+</div>
+</form>
+
+   
+
+
+{% endblock %}
+
+
+
+{% block javascripts %} 
+
+<script>
+
+
+
+const url = new URL('http://92.243.10.85:3000/hub');
+
+
+url.searchParams.append('topic', 'http://monsite.com/ping/10');
+
+
+
+
+
+
+const eventSource = new EventSource(url);
+
+
+eventSource.onmessage = e => {
+  
+  console.log(e)
+   
+  const div =document.getElementById('conversation');
+  const connect = document.getElementById('connected-list');
+  const bubble = document.createElement('div');
+  const message = document.createElement('p');
+  const name = document.createElement('h3');
+  const time = document.createElement('h6');
+  newData = JSON.parse(e.data);
+  console.log(newData.time);
+  console.log(newData.name);
+  console.log(newData.message);
+  console.log(newData.remove);
+  
+  
+ if(newData.message!=undefined && newData.name!=undefined)
+ {
+    $('#pre-send').find('#'+newData.name+'').remove()
+      bubble.appendChild(name);
+      bubble.appendChild(message);
+      bubble.appendChild(time);
+      div.appendChild(bubble);
+      bubble.setAttribute('id',newData.name);
+      name.innerText= newData.name;
+      message.innerText=newData.message;
+      time.innerText=newData.hour
+      $("#conversation").scrollTop(100000000000000000000000000000000000000)
+      console.log('under the scroll')
+  
+      
+ }else{
+
+       if(newData.remove!=undefined && newData.name!=undefined && newData.message==undefined)
+       {
+         $('#pre-send').find('#'+newData.name+'').remove()
+       }else{
+  
+        if(newData.name!=undefined && newData.message==undefined && newData.joined==undefined)
+        {
+
+          const pre_send= document.createElement('p');
+          pre_send.setAttribute('id',newData.name);
+          pre_send.innerHTML=newData.name+'&nbsp;'+'est en train d\'écrire un message'+'<p class="saving"><span>.</span><span>.</span><span>.</span></p>'
+          $('#pre-send').append(pre_send)
+          
+          
+        }
+
+         if(newData.name!=undefined && newData.message==undefined && newData.joined===true)
+        {
+          console.log('testshow')
+          const joined_show = document.createElement('p');
+          joined_show.setAttribute('id',newData.name);
+          joined_show.innerHTML=newData.name+'&nbsp;'+'a rejoins le chat'
+          $('#connected-list').append(joined_show)
+          window.setTimeout(()=>{
+             
+            $('#connected-list').find('#'+newData.name+'').remove();
+
+          },4000)
+          
+        }
+       
+       }
+          if(newData.name==undefined && newData.message==undefined && newData.anonymous===true)
+        {
+          console.log('testshow')
+          const joined_show = document.createElement('p');
+          joined_show.setAttribute('id',newData.name);
+          joined_show.innerHTML='Un anonyme a rejoins le chat'
+          $('#connected-list').append(joined_show)
+          window.setTimeout(()=>{
+             
+            $('#connected-list').find('#'+newData.name+'').remove();
+
+          },4000)
+          
+        }
+       
+       }
+}
+  
+
+</script>
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="{{ asset('js/app.js') }}"> </script>
+
+<script
+
+
+
+{% endblock %}

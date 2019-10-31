@@ -1,0 +1,72 @@
+{% extends 'base.html.twig' %}
+
+{% block titlePage %}Liste des ENTITES{% endblock %}
+
+{% block body %}
+
+    {# table #}
+    <table class="table">
+        <thead class="thead-light">
+            <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nom</th>
+            <th scope="col">Actions possibles</th>
+            <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+            <th scope="row">1</th>
+                <td>Projet</td>
+                <td>Read - Delete</td>
+                <td><a href="{{ path('backend_project_list')}}"><button type="button" class="btn btn-info">Voir</button></a></td>
+            </tr>
+            <tr>
+            <th scope="row">2</th>
+                <td>Utilisateur</td>
+                <td>Create - Read - Update - Delete</td>
+                <td>
+                    <a href="{{ path('backend_user_list')}}"><button type="button" class="btn btn-info">Voir</button></a>
+                    <a href="{{ path('backend_user_new')}}"><button type="button" class="btn btn-success">Créer</button></a>
+                </td>
+            </tr>
+            <tr>
+            <th scope="row">3</th>
+                <td>Prestataire</td>
+                <td>Create - Read - Update - Delete</td>
+                <td>
+                    <a href="{{ path('backend_provider_list')}}"><button type="button" class="btn btn-info">Voir</button></a>
+                    <a href="{{ path('backend_provider_new')}}"><button type="button" class="btn btn-success">Créer</button></a>
+                </td>
+            </tr>
+            <tr>
+            <th scope="row">4</th>
+                <td>Département</td>
+                <td>Create - Read - Update - Delete</td>
+                <td>
+                    <a href="{{ path('backend_department_list')}}"><button type="button" class="btn btn-info">Voir</button></a>
+                    <a href="{{ path('backend_department_new')}}"><button type="button" class="btn btn-success">Créer</button></a>
+                </td>
+            </tr>
+            <th scope="row">5</th>
+                <td>Théme</td>
+                <td>Create - Read - Update - Delete</td>
+                <td>
+                    <a href="{{ path('backend_theme_list')}}"><button type="button" class="btn btn-info">Voir</button></a>
+                    <a href="{{ path('backend_theme_new')}}"><button type="button" class="btn btn-success">Créer</button></a>
+                </td>
+            </tr>
+            <th scope="row">6</th>
+                <td>Rôle</td>
+                <td>Create - Read - Update - Delete</td>
+                <td>
+                    <a href="{{ path('backend_role_list')}}"><button type="button" class="btn btn-info">Voir</button></a>
+                    <a href="{{ path('backend_role_new')}}"><button type="button" class="btn btn-success">Créer</button></a>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+
+
+{% endblock %}

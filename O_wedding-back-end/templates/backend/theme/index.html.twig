@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block titlePage %}Liste des THEMES{% endblock %}
+
+{% block body %}
+
+ <a href="{{ path('backend_theme_new')}}"><button type="button" class="btn btn-success left">Créer un nouveau</button></a>
+ <a class="btn btn-info left" href="{{ path('backend_theme_list') }}">Annuler le tri</a>
+ {# table #}
+    <table class="table">
+        <thead class="thead-light">
+            <tr>
+            <th scope="col">#</th>
+            <th scope="col">Date de création
+                <a href="{{ path('backend_theme_orderby_date_asc') }}"><i class="fas fa-angle-up"></i></a>
+                <a href="{{ path('backend_theme_orderby_date_desc') }}"><i class="fas fa-angle-down"></i></a>
+            </th>
+            <th scope="col">Nom du thème
+                <a href="{{ path('backend_theme_orderby_name_asc') }}"><i class="fas fa-angle-up"></i></a>
+                <a href="{{ path('backend_theme_orderby_name_desc') }}"><i class="fas fa-angle-down"></i></a>
+            </th>
+            <th scope="col">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        {% if themes %}
+        
+        {% for theme in themes %}
+            <tr>
+            <th scope="row">{{ theme.id}}</th>
+                <td>{{ theme.createdAt|date('d-m-Y')}}</td>
+                <td>{{ theme.name}}</td>
+                <td>
+                <a href="{{ path('backend_theme_show', { id : theme.id }) }}"><button type="button" class="btn btn-info">Détails</button></a>
+                <a href="{{ path('backend_theme_edit', { id : theme.id }) }}"><button type="button" class="btn btn-dark">Modifier</button></a>
+                <a href="{{ path('backend_theme_delete', { id : theme.id }) }}"><button type="button" class="btn btn-danger">Supprimer</button></a>
+                </td>
+            </tr>
+            <tr>
+        {% endfor %}
+        {% else %}
+            <tr>
+                <th scope="row">Aucun théme</td>
+            </tr>
+        {% endif %}
+        </tbody>
+    </table>
+<a href="{{ path('backend_theme_new')}}"><button type="button" class="btn btn-success left">Créer un nouveau</button></a>
+
+{% endblock %}

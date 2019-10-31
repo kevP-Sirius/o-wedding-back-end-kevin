@@ -1,0 +1,58 @@
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="example-wrapper">
+    <h1>Bienvenueà O'wedding ! </h1>
+
+  <p>  Votre compte a bien été crée vous pouvez dors et déja vous connectez sur notre site et démmarer votre projet.</p>
+
+  Attention:Ceci est un message automatique , merci de ne pas y répondre .
+  <a href="" onclick="signOut()">Sign out</a>
+   <a href="{{ path('test_road_2') }}"><button type="button" class="btn btn-info">Détails</button></a>
+    <button   id="btn" class="btn">{{ button_label|default('Change') }}button>
+{% endblock %}
+
+<script src="https://apis.google.com/js/platform.js" async defer>
+document.getElementById("btn").addEventListener("click", googleInit());
+renderButton() {
+                 gapi.signin2.render('myGoogleButton'
+                {
+                    'scope': 'profile email',
+                    'width': 240,
+                    'height': 40,
+                    'longtitle': true,
+                    'theme': 'dark',
+                    'onsuccess': () => {},
+                    'onfailure': () => {}
+                });
+}
+googleInit()  // you can call this anything (change in URL)
+{
+    gapi.load('auth2', () => {
+
+        gapi.auth2.init({ client_id:803639939358-tedgdbfkv1j7ff3370m2m36rtuumt32k.apps.googleusercontent.com }).then(() => {
+
+            // DO NOT ATTEMPT TO RENDER BUTTON UNTIL THE 'Init' PROMISE RETURNS
+            renderButton();
+
+        });
+    });
+}
+function onSignIn(googleUser) {
+  var profile = googleUser.getBasicProfile();
+  console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+  console.log('Name: ' + profile.getName());
+  console.log('Image URL: ' + profile.getImageUrl());
+  console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+
+}
+
+<meta name="google-signin-client_id" content="803639939358-tedgdbfkv1j7ff3370m2m36rtuumt32k.apps.googleusercontent.com">
+  
+
+
+</script>

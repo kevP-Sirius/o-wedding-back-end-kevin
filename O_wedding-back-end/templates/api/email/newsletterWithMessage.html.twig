@@ -1,0 +1,25 @@
+{% extends 'api/base.html.twig' %}
+{% block body %}
+
+<div class="form news email">
+<hr>
+    <h1 style="
+    text-align: center;
+    margin-bottom: 2rem;
+    ">Bonjour {{ guest_name }}</h1>
+<hr>
+    <p>Vous faites parti de la liste d'invités du mariage de {{ username }}.</p>
+    <p>Ce dernier à un message pour vous :</p>
+    <p>"{{ message }}"</p>
+
+   
+    <p>Pour changer le parametre de la newsletter cliquez sur ce lien : {{ link }}</p>
+    <p>Ce lien seras valide tant que le projet de mariage seras actif et que vous faites bien parti de la liste des 
+    invités.</p>
+
+    <p>L'équipe <a style="font-weight: bold; font-family: 'Alex Brush', cursive;" href="http://www.owedding.fr/">O'wedding !</a></p>
+
+     <em>Attention : ceci est un message automatique , merci de ne pas y répondre.</em>
+</div>
+{% endblock %}
+

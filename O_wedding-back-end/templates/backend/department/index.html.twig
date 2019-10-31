@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block titlePage %}Liste des DEPARTEMENTS{% endblock %}
+
+{% block body %}
+
+<a href="{{ path('backend_department_new')}}"><button type="button" class="btn btn-success left">Créer un nouveau</button></a>
+<a class="btn btn-info left" href="{{ path('backend_department_list') }}">Annuler le tri</a>
+    {# table #}
+    <table class="table">
+        <thead class="thead-light">
+            <tr>
+            <th scope="col">#</th>
+            <th scope="col">Numéro du département
+                <a href="{{ path('backend_department_orderby_number_asc') }}"><i class="fas fa-angle-up"></i></a>
+                <a href="{{ path('backend_department_orderby_number_desc') }}"><i class="fas fa-angle-down"></i></a>
+            </th>
+            <th scope="col">Nom du département
+                <a href="{{ path('backend_department_orderby_name_asc') }}"><i class="fas fa-angle-up"></i></a>
+                <a href="{{ path('backend_department_orderby_name_desc') }}"><i class="fas fa-angle-down"></i></a>
+            </th>
+            <th scope="col">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% if departments %}
+        
+        {% for department in departments %}
+            <tr>
+            <th scope="row">{{ department.id}}</th>
+                <td>{{ department.number}}</td>
+                <td>{{ department.name}}</td>
+                <td>
+                <a href="{{ path('backend_department_show', { id : department.id} ) }}"><button type="button" class="btn btn-info">Détails</button></a>
+                <a href="{{ path('backend_department_edit', { id : department.id} ) }}"><button type="button" class="btn btn-dark">Modifier</button></a>
+                <a href="{{ path('backend_department_delete', { id : department.id} ) }}"><button type="button" class="btn btn-danger">Supprimer</button></a>
+                </td>
+
+
+            </tr>
+            <tr>
+        {% endfor %}
+        {% else %}
+            <tr>
+                <th scope="row">Aucun département</td>
+            </tr>
+        {% endif %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('backend_department_new')}}"><button type="button" class="btn btn-success left">Créer un nouveau</button></a>
+
+{% endblock %}

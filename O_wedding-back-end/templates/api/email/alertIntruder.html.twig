@@ -1,0 +1,24 @@
+{% extends 'api/base.html.twig' %}
+{% block body %}
+
+<div class="form news email">
+<hr>
+    <h1 style="
+    text-align: center;
+    margin-bottom: 2rem;
+    ">Attention {{ name }}</h1>
+<hr>
+    <p>Activité suspecte detectée le {{ date|date('d-m-Y') }}, quelqu'un a tenté de se connecter à votre compte alors que vous étiez déja connecté.</p>
+    <p>Si vous n'êtes pas l'auteur de cette tentative merci de prendre contact avec l'adminitrasteur via le formulaire de contact de notre site et/ou de changer votre mot de passe via le formulaire de mot de passe oublié.</p>
+
+    <p>L'équipe <a style="font-weight: bold; font-family: 'Alex Brush', cursive;" href="http://www.owedding.fr/">O'wedding !</a></p>
+    
+    <em>Attention : Ceci est un message automatique , merci de ne pas y répondre</em>
+</div>
+    
+{% endblock %}
+
+
+  
+  
+  

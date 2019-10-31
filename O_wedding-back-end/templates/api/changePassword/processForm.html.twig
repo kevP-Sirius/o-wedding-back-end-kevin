@@ -1,0 +1,25 @@
+
+{% extends 'api/base.html.twig' %}
+{% block body %}
+
+<div class="form news email">
+<hr>
+<h1 class="newpass">Veuillez enregistrer votre nouveau mot de passe :</h1>
+<hr>
+{% form_theme form 'foundation_5_layout.html.twig' %}
+{{ form_start(form) }}<!-- genere <form action="" method="POST"> -->
+    {{ form_widget(form) }} <!-- genere les input , text , integer etc... selon la definition effectuée dans le type du form -->
+    <button class="btn newPass">{{ button_label|default('Valider') }}</button>
+{{ form_end(form) }}<!-- genere </form> -->
+
+
+<p>A bientôt !</p>
+
+<p>L'équipe <span class="sitename">O'wedding !</span></p>
+
+<em>Attention : ceci est un message automatique, merci de ne pas y répondre.</em>
+
+</div>
+
+{% endblock %}
+

@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block titlePage %}Liste des PROJETS{% endblock %}
+
+{% block body %}
+<a class="btn btn-info" href="{{ path('backend_project_list') }}">Annuler le tri</a>
+    {# table #}
+    <table class="table">
+        <thead class="thead-light">
+            <tr>
+            <th scope="col">#</th>
+            <th scope="col">Date de création
+                <a href="{{ path('backend_project_orderby_date_asc') }}"><i class="fas fa-angle-up"></i></a>
+                <a href="{{ path('backend_project_orderby_date_desc') }}"><i class="fas fa-angle-down"></i></a>
+            </th>
+            <th scope="col">Nom du projet
+                <a href="{{ path('backend_project_orderby_name_asc') }}"><i class="fas fa-angle-up"></i></a>
+                <a href="{{ path('backend_project_orderby_name_desc') }}"><i class="fas fa-angle-down"></i></a>
+            </th>
+            <th scope="col">User</th>
+            <th scope="col">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% if projects %}
+        
+        {% for project in projects %}
+            <tr>
+            <th scope="row">{{ project.id}}</th>
+                <td>{{ project.createdAt|date('d-m-Y')}}</td>
+                <td>{{ project.name}}</td>
+                <td>{{ project.user.username }}</td>
+                <td>
+                <a href="{{ path('backend_project_show', { id: project.id}) }}"><button type="button" class="btn btn-info">Détails</button></a>
+                <a href="{{ path('backend_project_delete', { id: project.id}) }}"><button type="button" class="btn btn-danger">Supprimer</button></a>
+                </td>
+
+
+            </tr>
+            <tr>
+        {% endfor %}
+        {% else %}
+            <tr>
+                <th scope="row">Aucun projet</td>
+            </tr>
+        {% endif %}
+        </tbody>
+    </table>
+
+
+
+{% endblock %}

@@ -1,0 +1,49 @@
+
+<nav class="navbar navbar-expand-lg navbar-light fixed-top" style="background-color: #e3f2fd;">
+        <a class="navbar-brand" href="{{ path('backend_index') }}">O'wedding</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+
+            {% if is_granted('ROLE_ADMIN') %}
+
+            <li class="nav-item active">
+                <a class="nav-link" href="{{ path('backend_list') }}">Accueil <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('backend_project_list')}}">Projet</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('backend_user_list')}}">Utilisateur</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('backend_provider_list')}}">Prestataire</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('backend_department_list')}}">Département</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('backend_theme_list')}}">Théme</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('backend_role_list')}}">Rôle</a>
+            </li>
+            </ul>
+         
+
+           {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+    
+            <a class="btn btn-outline-info my-2 my-sm-0" id="chat-btn" href="{{ path('mercure', { id : app.user.id })}}">Chat</a>
+                 <input type="hidden" id="user-id" name="id" value="{{ app.user.id }}">
+            <a href="{{ path('backend_user_show', {'id': app.user.id })}}" class="btn btn-outline-primary my-2 my-sm-0">Mon compte {{ app.user.username }}</a>
+
+            <a class="btn btn-danger my-2 my-sm-0"  href="{{ path('app_logout')}} ">Déconnexion</a>
+        
+            {% endif %}
+            {% endif %}
+
+        </div>
+    </nav>

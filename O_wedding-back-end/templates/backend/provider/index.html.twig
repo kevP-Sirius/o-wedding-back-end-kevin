@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block titlePage %}Liste des PRESTATAIRES{% endblock %}
+
+{% block body %}
+
+ <a href="{{ path('backend_provider_new') }}"><button type="button" class="btn btn-success left">Créer un nouveau</button></a>
+ <a class="btn btn-info left" href="{{ path('backend_provider_list') }}">Annuler le tri</a>
+    {# table #}
+    <table class="table">
+        <thead class="thead-light">
+            <tr>
+            <th scope="col">#</th>
+            <th scope="col">Date de création
+                <a href="{{ path('backend_provider_orderby_date_asc') }}"><i class="fas fa-angle-up"></i></a>
+                <a href="{{ path('backend_provider_orderby_date_desc') }}"><i class="fas fa-angle-down"></i></a>
+            </th>
+            <th scope="col">Nom du prestataire
+                <a href="{{ path('backend_provider_orderby_name_asc') }}"><i class="fas fa-angle-up"></i></a>
+                <a href="{{ path('backend_provider_orderby_name_desc') }}"><i class="fas fa-angle-down"></i></a>
+            </th>
+            <th scope="col">Thème</th>
+            <th scope="col">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% if providers %}
+        
+        {% for provider in providers %}
+            <tr>
+            <th scope="row">{{ provider.id}}</th>
+                <td>{{ provider.createdAt|date('d-m-Y')}}</td>
+                <td>{{ provider.name}}</td>
+                {% for theme in provider.theme if provider.theme %}
+                     <td>{{ theme.name }}</td>
+                     {% else %}
+                     <td><em>Aucun thème<em></td>
+                {% endfor %}
+                <td>
+                <a href="{{ path('backend_provider_show', { id : provider.id }) }}"><button type="button" class="btn btn-info">Détails</button></a>
+                <a href="{{ path('backend_provider_edit', { id : provider.id }) }}"><button type="button" class="btn btn-dark">Modifier</button></a>
+                <a href="{{ path('backend_provider_delete', { id : provider.id }) }}"><button type="button" class="btn btn-danger">Supprimer</button></a>
+                </td>
+            </tr>
+            <tr>
+        {% endfor %}
+        {% else %}
+            <tr>
+                <th scope="row">Aucun prestataire</td>
+            </tr>
+        {% endif %}
+        </tbody>
+    </table>
+<a href="{{ path('backend_provider_new') }}"><button type="button" class="btn btn-success left">Créer un nouveau</button></a>
+
+{% endblock %}

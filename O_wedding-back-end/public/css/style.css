@@ -1,0 +1,565 @@
+body {
+    margin: auto;
+    font-family: 'Crimson Pro', serif;
+    font-size: 1.3em;
+    background-image: url('../images/BackgroundT.png');
+    background-size: 100%;
+}
+
+/** Navigation **/
+
+.navbar {
+    padding: 0.5em 2em;
+}
+
+.navbar-brand {
+    font-family: 'Alex Brush', cursive;
+    font-size: 3em;
+    margin-right: 1em;
+}
+
+
+.titleInterface {
+    width: 100%;
+    height: 7em;
+    text-align: center;
+    background-color:grey;
+    color: whitesmoke;
+    margin-top: 5.9em;
+    padding-top: 2.2em;
+
+}
+
+h2 {
+    text-align: center;
+    margin-top: 10em;
+    margin-bottom: 2em;
+    text-transform: uppercase;
+
+}
+
+.container {
+    width: 80%;
+    margin: 2em auto;
+    
+}
+
+/** Home **/
+/** non connecté **/
+.pictureHome {
+    text-align: center;
+    position: relative;
+}
+
+.connect {
+    position: absolute;
+    bottom: 6.5em;
+    right: 21em;
+}
+
+a.loginHome{
+    color: #f6869e;
+    font-size: 3em;
+    font-family: 'Alex Brush', cursive;
+    
+}
+
+a.loginHome:hover {
+    text-decoration: none;
+    color: #c9405c;
+}
+
+/** connecté **/
+
+.connect p {
+    font-size: 1.5em;
+    color: #f6869e;
+    margin-bottom: 0.009em;
+
+}
+
+/** formulaire de connection **/
+
+.loginForm {
+    
+    margin: auto;
+    width: 30%;
+}
+
+.loginForm input {
+    margin-bottom: 1em;
+}
+
+/** carte **/
+
+.card {
+    margin-top: 0.5em;
+    position: relative;
+}
+
+.card a:hover {
+    text-decoration: none;
+}
+
+
+.card-header {
+    font-weight: bold;
+    font-size: 1.5em;
+    background-color: #e3f2fd;
+}
+
+/** tableau **/
+.table {
+    margin-top: 2em;
+    text-align: center;
+    width: 110%;
+}
+
+.table .btn {
+    width: 6em;
+}
+
+i {
+    color: black;
+}
+
+/** bouton **/
+
+.btn.left {
+ margin-bottom: -1em;
+}
+
+.btn {
+    margin-right: 0.5em;
+}
+
+
+
+/** formulaire **/
+
+.form {
+    margin: auto;
+    width: 70%;
+}
+
+.btn.form {
+    width: 15%;
+    margin-left: 8.5em;
+}
+
+/** page newsletter **/
+
+.newsletter {
+    font-family: 'Alex Brush', cursive;
+    font-size: 5em;
+    color: #144956;
+    text-align: center;
+    margin-top: 0.6em;
+    background-size: 100%;
+}
+
+.form.news {
+    margin: -12em auto;
+    max-width: 60%;
+    color: #144956;
+
+}
+
+.form.news.email p {
+    text-align: justify;
+}
+
+.form.news.email h3 {
+    text-align: justify;
+}
+
+.form.news.email h1 {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.form.news.email label {
+    margin-right: 1rem;
+}
+
+.form.news.email input {
+    padding: 0 1rem;
+    border: 0.05rem solid #144956;
+    border-radius: 1rem;
+    margin-bottom: 1rem;
+}
+
+.btn.newPass {
+    background-color: #144956;
+    color: white;
+    width: 20%;
+}
+
+.newpass {
+    font-size: 2rem;
+    padding: 1rem;
+}
+
+.form.news.email form {
+    border: 0.1rem solid #144956;
+    padding: 2rem 0 2rem 4rem;
+    margin-bottom : 2rem;
+    margin-top:3rem;
+    border-radius: 1rem;
+    background-image: url('../images/background.jpg');
+    background-size: 100%;
+
+}
+
+.sitename {
+    font-family: 'Alex Brush', cursive;
+    font-weight: bold;
+}
+
+.form.news h3 {
+    text-align: center;
+    margin-bottom: 2em;
+    margin-top: 2em;
+}
+
+.news p {
+    text-align: center;
+}
+
+
+.formbody {
+    margin: auto;
+    margin-top: 3em;
+    border-radius: 1em;
+    background-color: #dfe5de;
+    padding: 3em 4em 2em;
+    margin-bottom: 3em;
+}
+
+.marginhr {
+    margin-top : 3em;
+}
+
+.formbody .btn {
+    background-color: #144956;
+    color: white;
+    margin-bottom: 2em;
+    margin-top: 1em;
+    min-width: 20%;
+}
+
+#guest label {
+    margin-right: 1em;
+    margin-bottom : 0.8em;
+}
+
+#guest input {
+    border-radius: 1em;
+    border: none;
+    padding-left: 1em;
+}
+
+#guest_newsletter_is_active, #guest_is_coming {
+    margin-right: 0.5em;
+}
+
+
+.btn.btn-info.error {
+    text-align: center;
+    margin-left: 40%;
+}
+
+/* chat mercure */
+
+.wrapper-message { 
+    margin: 1em auto;
+    max-width: 800px;
+    width: 95%;
+    font: 18px/1.5 sans-serif;
+}
+.wrapper-messager code { 
+    background: #F5F5F5;
+    padding: 2px 6px;
+}
+
+#ui{
+    border-color: teal;
+   display: flex;
+   flex-direction: column;
+   flex-wrap: wrap;
+   background-color: #fafafa;
+   border-top: 3px solid #1b4e5b;
+   border-radius: 5px;
+   box-shadow: 10px 5px 20px #aaa;
+   padding: 20px 20px 20px 20px;
+   border-bottom:10px; 
+    width: 100%;
+    margin-top: 2.5rem;
+   
+}
+
+#ui input {
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    border: 1px solid #1b4e5b;
+}
+
+#ui label {
+    margin-right: 1rem;
+    margin-top: 1rem;
+}
+#conversation {
+
+   background-color: #fafafa;
+   border-top: 3px solid #1b4e5b;
+   border-radius: 5px;
+   box-shadow: 10px 5px 20px #aaa;
+   padding: 50px 50px;
+   border-bottom:10px;
+   min-width: 100%;
+   min-height:200%;
+   width: 110px;
+   height: 400px;
+   overflow: auto;
+   font-size:10px;
+   
+ 
+
+}
+
+#field-message {
+width: 100%;
+
+} 
+#buttons{
+ display:flex;
+ align-items: center;
+ justify-content: space-between;
+ 
+}
+#sub-button{
+    
+ margin-top:1rem;
+ width: 10%;
+ border-radius: 5px;
+ background-color: #1b4e5b;
+ color:white;
+ font-weight:bold;
+} 
+#reset-button{
+
+ margin-top:1rem;
+ width: 10%;
+ border-radius: 5px;
+ background-color: #1b4e5b;
+ color:white;
+ font-weight:bold;
+
+} 
+
+#clear-button{
+  
+  margin-top:1rem;
+  width:20%;
+  border-radius:5px;
+  background-color:#1b4e5b;
+  color:white;
+  font-weight:bold;
+  font-size:15px;
+
+} 
+#user-id{
+
+  flex:wrap;
+
+}
+#conversation div{
+
+  margin-top: 0.5rem;
+  width:100%;
+  color:#1b4e5b;
+  background:#e3f2fd;
+  padding: 0.5rem 1rem 0.5rem 1rem;
+  border-radius:5px;
+  box-shadow:0 0 2px rgba(0,0,0,.5);
+  transform:scale(0) rotate(-12deg);
+  transform:scale(1) rotate(0); 
+  transition:all .25s;
+  margin-right:4rem;
+  overflow-wrap: break-word;
+  
+}
+#conversation h3{
+    margin-top: 1rem;
+    font-weight: bold;
+    font-size: 1rem;
+    
+}
+#conversation h6{
+    margin-top: 0.5rem;
+    font-size: 0.7rem;
+    font-style: italic;
+    
+  
+}
+#conversation p{
+    margin-top: 0.5rem;
+    font-size: 1.2rem;
+    scroll-behavior: auto;
+  
+}
+#bienvenue {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+#pre-send p {
+    font-style: italic;
+    font-size: 1rem;
+    margin-left: 0.5rem;
+    display:inline-flex;
+    
+
+}
+#connected-list {
+
+    font-style: italic;
+    font-size: 1rem;
+    
+    
+}
+.BOOST {
+  
+  background-color:blue;
+  
+}
+.lds-ellipsis {
+  display: inline-block;
+  position: relative;
+  width: 64px;
+  height: 64px;
+}
+.lds-ellipsis div {
+  position: absolute;
+  top: 27px;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: #fff;
+  animation-timing-function: cubic-bezier(0, 1, 1, 0);
+}
+.lds-ellipsis div:nth-child(1) {
+  left: 6px;
+  animation: lds-ellipsis1 0.6s infinite;
+}
+.lds-ellipsis div:nth-child(2) {
+  left: 6px;
+  animation: lds-ellipsis2 0.6s infinite;
+}
+.lds-ellipsis div:nth-child(3) {
+  left: 26px;
+  animation: lds-ellipsis2 0.6s infinite;
+}
+.lds-ellipsis div:nth-child(4) {
+  left: 45px;
+  animation: lds-ellipsis3 0.6s infinite;
+}
+@keyframes lds-ellipsis1 {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes lds-ellipsis3 {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0);
+  }
+}
+@keyframes lds-ellipsis2 {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(19px, 0);
+  }
+}
+
+
+@keyframes blink {
+    /**
+     * At the start of the animation the dot
+     * has an opacity of .2
+     */
+    0% {
+      opacity: .2;
+    }
+    /**
+     * At 20% the dot is fully visible and
+     * then fades out slowly
+     */
+    20% {
+      opacity: 1;
+    }
+    /**
+     * Until it reaches an opacity of .2 and
+     * the animation can start again
+     */
+    100% {
+        
+      opacity: .2;
+
+    }
+}
+
+.saving span {
+    /**
+     * Use the blink animation, which is defined above
+     */
+    animation-name: blink;
+    /**
+     * The animation should take 1.4 seconds
+     */
+    animation-duration: 1.4s;
+    /**
+     * It will repeat itself forever
+     */
+    animation-iteration-count: infinite;
+    /**
+     * This makes sure that the starting style (opacity: .2)
+     * of the animation is applied before the animation starts.
+     * Otherwise we would see a short flash or would have
+     * to set the default styling of the dots to the same
+     * as the animation. Same applies for the ending styles.
+     */
+    animation-fill-mode: both;
+}
+
+.saving span:nth-child(2) {
+    /**
+     * Starts the animation of the third dot
+     * with a delay of .2s, otherwise all dots
+     * would animate at the same time
+     */
+    animation-delay: .2s;
+}
+
+.saving span:nth-child(3) {
+    /**
+     * Starts the animation of the third dot
+     * with a delay of .4s, otherwise all dots
+     * would animate at the same time
+     */
+    animation-delay: .4s;
+}
+
+
+
+
+
+

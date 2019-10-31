@@ -1,0 +1,73 @@
+{% extends 'api/base.html.twig' %}
+{% block body %}
+
+<div class="form news">
+<hr>
+<h3>Bonjour {{ guest.lastname }} {{ guest.firstname }}</h3>
+       
+     
+                  {% if  user.maried1 is defined and user.maried2 is defined %}
+    <p>{{ user.maried1 }} et {{ user.maried2 }} vous invitent à remplir ce formulaire avant le {{ user.before_deadline }}</p>
+        <p>Ils vous remercient d'avance pour votre réponse</p>
+    {% endif %}     
+
+     {% if  user.maried1 is defined and user.maried2 is not defined %}
+    <p>{{ user.maried1 }}  vous invitent à remplir ce formulaire avant le {{ user.before_deadline }}</p>
+        <p>Ils vous remercient d'avance pour votre réponse</p>
+    {% endif %}  
+     {% if  user.maried1 is not defined  and user.maried2 is not defined %}
+    <p>{{ user.user_project }}  vous invitent à remplir ce formulaire avant le {{ user.before_deadline }}</p>
+        <p>Ils vous remercient d'avance pour votre réponse</p>
+    {% endif %}                       
+                                            
+        <hr class="marginhr">
+
+<div class="formbody">
+
+    {% if coming_status =='absent' %}
+    <p>Veuillez nous confirmer votre présence en cliquant sur "je serais présent"</p>
+    {% endif %}
+    
+   {% if coming_status == 'present' %}
+   {# Messages d'alerte #}
+            {% for label, messages in app.flashes %}
+                {% for message in messages %}
+                    <div class="alert alert-{{ label }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endfor %}
+
+        {% form_theme form 'foundation_5_layout.html.twig' %}
+    {{ form_start(form) }}
+
+    {{ form_widget(form) }}
+        <button type="submit" class="btn">{{ button_label|default('Envoyez') }}</button>
+    {{ form_end(form) }}
+   {% endif %}
+   
+
+    {% if coming_status =='absent' %}
+         <a href="{{ path('change_guest_status', { id: guest_id, order:'is_coming', jwt:jwt }) }}"><button type="button" class="btn btn-info">je serais présent</button></a>
+    {% endif %}
+     {% if coming_status =='present' %}
+         <a href="{{ path('change_guest_status', { id: guest_id, order:'is_coming', jwt:jwt }) }}"><button type="button" class="btn btn-info">je serais absent</button></a>
+    {% endif %}
+   {% if newsletter_status =='s\'abonner' %}
+   
+    <a href="{{ path('change_guest_status', { id: guest_id, order:'newsletter_status', jwt:jwt } )}}"><button type="button" class="btn btn-info">se désabonner à la newsletter</button></a>
+      
+   {% endif %}
+
+   {% if newsletter_status =='se desabonner' %}
+   
+    <a href="{{ path('change_guest_status', { id: guest_id, order:'newsletter_status', jwt:jwt } )}}"><button type="button" class="btn btn-info">s'abonner à la newsletter</button></a>
+      
+   {% endif %}
+   
+    
+</div>
+
+</div>
+{% endblock %}
+

@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block titlePage %}Liste des ROLES{% endblock %}
+
+{% block body %}
+
+ <a href="{{ path('backend_role_new')}}"><button type="button" class="btn btn-success left">Créer un nouveau</button></a>
+    {# table #}
+    <table class="table">
+        <thead class="thead-light">
+            <tr>
+            <th scope="col">#</th>
+            <th scope="col">Date de création
+            
+            </th>
+            <th scope="col">Nom du rôle</th>
+            <th scope="col">Code du rôle</th>
+            <th scope="col">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% if roles %}
+        
+        {% for role in roles %}
+            <tr>
+            <th scope="row">{{ role.id}}</th>
+                <td>{{ role.createdAt|date('d-m-Y')}}</td>
+                <td>{{ role.name}}</td>
+                <td>{{ role.roleString}}</td>
+                <td>
+                <a href="{{ path('backend_role_show', { id : role.id }) }}"><button type="button" class="btn btn-info">Détails</button></a>
+                <a href="{{ path('backend_role_edit', { id : role.id }) }}"><button type="button" class="btn btn-dark">Modifier</button></a>
+                <a href="{{ path('backend_role_delete', { id : role.id }) }}"><button type="button" class="btn btn-danger">Supprimer</button></a>
+                </td>
+            </tr>
+            <tr>
+        {% endfor %}
+        {% else %}
+            <tr>
+                <th scope="row">Aucun rôle</td>
+            </tr>
+        {% endif %}
+        </tbody>
+    </table>
+<a href="{{ path('backend_role_new')}}"><button type="button" class="btn btn-success left">Créer un nouveau</button></a>
+
+{% endblock %}

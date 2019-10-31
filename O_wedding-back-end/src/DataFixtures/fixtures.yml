@@ -1,0 +1,52 @@
+
+App\Entity\Role:
+    role_{1..2}: 
+        name (unique): '<roleName()>'
+        roleString (unique): '<roleString()>'
+
+App\Entity\Type:
+    type_{1..3}:
+        name (unique): '<typeName()>'
+
+App\Entity\Guest:
+    guest_{1..100}: 
+        lastname (unique): '<lastName()>'
+        firstname (unique): '<firstName()>'
+        email (unique): '<email()>'
+        phone_number (unique): '<numberBetween(054000000, 054299999)>'
+        type: '@type*'
+
+App\Entity\Department:
+    department_{1..93}: 
+        number (unique): '<numberBetween(1, 95)>'
+        name (unique): '<departmentName()>'
+App\Entity\Theme:
+    theme_{1..7}:
+        name (unique): '<themeName()>'     
+
+App\Entity\Provider:
+    provider_{1..500}:
+        name (unique): '<username()>' 
+        phone_number: '<numberBetween(0640000000, 0742999999)>'
+        email (unique): '<email()>'
+        theme: ['@theme*']
+        department: ['@department*']
+        average_price: '<averagePrice()>'
+
+        
+App\Entity\User:
+    user_{1..100}: 
+        username (unique): '<firstName()>'
+        email (unique): '<email()>'
+        password : 'test'
+        role: '@role*'
+        
+App\Entity\Project:
+    project_{1..100}: 
+        name: '<word()>'
+        deadline: '11-07-2020'
+        forecast_budget: '<numberBetween(5000, 30000)>'
+        department: '@department*'
+        provider: '30x @provider*'
+        guest: '100x @guest*'
+        user (unique): '@user*'

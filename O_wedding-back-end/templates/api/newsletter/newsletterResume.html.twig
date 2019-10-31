@@ -1,0 +1,54 @@
+{% extends 'api/base.html.twig' %}
+{% block body %}
+
+<div class="form news">
+<hr>
+<h3>Bonjour {{ guest.lastname }} {{ guest.firstname }}</h3>
+       
+     
+                  {% if  user.maried1 is defined and user.maried2 is defined %}
+    <p>{{ user.maried1 }} et {{ user.maried2 }} vous remercie d'avoir remplis ce formulaire avant le {{ user.before_deadline }}</p>
+        <p>Voici le récapitulatif des informations que vous avez transmis</p>
+    {% endif %}     
+
+     {% if  user.maried1 is defined and user.maried2 is not defined %}
+    <p>{{ user.maried1 }}  vous remercie d'avoir remplis ce formulaire avant le {{ user.before_deadline }}</p>
+        <p>Voici le récapitulatif des informations que vous avez transmis</p>
+    {% endif %}  
+     {% if  user.maried1 is not defined  and user.maried2 is not defined %}
+    <p>{{ user.user_project }}  vous remercie d'avoir remplis ce formulaire avant le {{ user.before_deadline }}</p>
+        <p>Voici le récapitulatif des informations que vous avez transmis</p>
+    {% endif %}                       
+                                            
+        <hr class="marginhr">
+ 
+<div class="formbody">
+
+<p>Vous avez indiqué aux futurs mariés que :</p>
+<p>- vous serez au total {{ guest.isComingWith }} personne(s).</p>
+
+<p>-Vous mangerez {{ guest.MeatMealNumber }} plat(s) viande(s).
+</p>
+<p>-Vous mangerez {{ guest.VegetarianMealNumber}} plat(s) végétarien(s)</p>
+
+
+
+   
+   {% if newsletter_status =='s\'abonner' %}
+   
+    <a href="{{ path('change_guest_status', { id: guest_id, order:'newsletter_status', jwt:jwt } )}}"><button type="button" class="btn btn-info">Se désabonner à la newsletter</button></a>
+      
+   {% endif %}
+
+   {% if newsletter_status =='se desabonner' %}
+   
+    <a href="{{ path('change_guest_status', { id: guest_id, order:'newsletter_status', jwt:jwt } )}}"><button type="button" class="btn btn-info">S'abonner à la newsletter</button></a>
+      
+   {% endif %}
+   
+    
+</div>
+
+</div>
+{% endblock %}
+

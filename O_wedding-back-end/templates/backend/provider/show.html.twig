@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block titlePage %}Prestataire : {{ provider.name}}{% endblock %}
+
+
+{% block body %}
+<a href="{{ path('backend_provider_list') }}">Retour à la liste</a>
+
+<div class="card">
+  <div class="card-header">
+    Nom : {{ provider.name }}
+  </div>
+  <div class="card-body">
+  <img src="{{ provider.picture }}" alt="">
+  <hr>
+    <h5 class="card-title">Description : {{ provider.description }}</h5>
+    {% for department in provider.department %}
+       <p class="card-text">Départements : <span>{{ department.number }} - {{ department.name }}</span></p>
+    {% endfor %}
+   
+    <p class="card-text">Numéro de téléphone : {{ provider.phoneNumber}}</p>
+    <p class="card-text">Email : {{ provider.email}} </p>
+    <p class="card-text">Tarif Moyen : {{ provider.averagePrice}} €</p>
+    <p class="card-text">Date de création du prestataire : {{ provider.createdAt|date('d/m/Y')}}</p>
+    <p class="card-text">Date de mise à jour du prestataire : {{ provider.updatedAt|date('d/m/Y')}}</p>
+    <p class="card-text">Liste des projets :</p>
+    <ul>
+      {% for project in provider.projects if provider.projects %}
+      <li><a href="{{ path('backend_project_show', { id : project.id }) }}">{{ project.name }}</a></li>
+      {% else %}
+      <li>Aucun projet</li>
+      {% endfor %}
+    </ul>
+    <p class="card-text">Liste des thèmes :</p>
+    <ul>
+      {% for theme in provider.theme if provider.theme %}
+      <li><a href="{{ path('backend_theme_show', { id : theme.id }) }}">{{ theme.name }}</a></li>
+      {% else %}
+      <li>Aucun thème</li>
+      {% endfor %}
+    </ul>
+    <a href="{{ path('backend_provider_delete', { id : provider.id }) }}" class="btn btn-danger">Supprimer</a>
+    <a href="{{ path('backend_provider_edit', { id : provider.id }) }}"><button type="button" class="btn btn-dark">Modifier</button></a>
+  </div>
+</div>
+
+{% endblock %}

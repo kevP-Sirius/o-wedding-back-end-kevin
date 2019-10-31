@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block titlePage %}Théme : {{ theme.name }}{% endblock %}
+
+{% block body %}
+<a href="{{ path('backend_theme_list') }}">Retour à la liste</a>
+
+<div class="card">
+  <div class="card-header">
+    Liste des prestataires
+  </div>
+  <div class="card-body">
+  <ul>
+{% for provider in theme.providers if theme.providers %}
+    <li><a href="{{ path('backend_provider_show', { id : provider.id }) }}">{{ provider.name }}</a></li>
+    {% else %}
+    <li>Aucun prestataire</li>
+  {% endfor %}
+   </ul>
+     
+  <a href="{{ path('backend_theme_delete', { id : theme.id }) }}" class="btn btn-danger">Supprimer</a> <a href="{{ path('backend_theme_edit', { id : theme.id }) }}" class="btn btn-dark">Modifier</a> 
+  </div>
+</div>
+{% endblock %}

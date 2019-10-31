@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block titlePage %}UTILISATEUR : {{ user.username}}{% endblock %}
+
+{% block body %}
+
+<div class="card">
+  <div class="card-header">
+    Nom : {{ user.username }}
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">Email : {{ user.email }}</h5>
+    <p class="card-text">Mot de passe : <a href="{{ path('backend_user_edit_password', { id : user.id }) }}" class="btn btn-warning"> Modifier</a></p>
+    <p class="card-text">Date de création : {{ user.createdAt|date('d/m/Y')}}</p>
+    <p class="card-text">Nom du projet : {% if user.project %}<a href="{{ path('backend_project_show', { id : user.project.id }) }}">{{ user.project.name }}</a> {% else %} aucun projet crée {% endif %}</p>
+    <p class="card-text">Date du mariage : {% if user.project %}{{ user.project.deadline|date('d/m/Y') }}{% else %} aucune date {% endif %}</p>
+    <p class="card-text">Lieu du mariage : {% if user.project %}{{ user.project.department.name }}{% else %} aucun département {% endif %}</p>
+   
+        
+    <a href="{{ path('backend_user_delete', { id : user.id }) }}" class="btn btn-danger">Supprimer</a> <a href="{{ path('backend_user_edit', { id : user.id }) }}" class="btn btn-info">Modifier</a> 
+  </div>
+</div>
+<br>
+<a href="{{ path('backend_user_list') }}">Retour à la liste</a>
+
+{% endblock %}

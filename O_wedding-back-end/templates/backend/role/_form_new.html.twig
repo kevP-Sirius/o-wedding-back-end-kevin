@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block titlePage %}Création d'un nouveau rôle{% endblock %}
+
+{% block body %}
+
+<div class="form">
+
+{{ form_start(form) }}
+    {{ form_widget(form) }}
+    <button type="submit" class="btn btn-primary form">Ajouter</button>
+{{ form_end(form) }}
+
+</div>
+
+<a href="{{ path('backend_role_list') }}">Retour</a>
+
+{% endblock %}
