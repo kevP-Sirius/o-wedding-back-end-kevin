@@ -9,4 +9,4 @@ je me suis occupé des fonctionnalité de l'API ,et de la mise en place de mercu
 nous avons travailler ensemble sur la phase de documentation avec le MCD notamment ,
 puis ensuite une fois la bdd terminer nous avons séparer le travail entre ces deux grandes catégories .
 Nous avons également travaillé ensemble sur l'interface invité , qui par manque de temps et dans le but d'aider
-nos coéquipié côté front c'est retrouver dans Symfony .
+nos coéquipié côté front c'est retrouvé dans Symfony .
